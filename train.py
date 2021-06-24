@@ -1,7 +1,7 @@
-from collections import defaultdict
 import glob
 import time
 import copy
+from collections import defaultdict
 
 import numpy as np
 import cv2

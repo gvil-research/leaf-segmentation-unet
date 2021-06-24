@@ -1,8 +1,14 @@
+# repo specific
+.vscode/*
+preprocess/DenseLeaves/*
+preprocess/DenseLeaves.zip
+model/*
+!model/note.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-.vscode/*
 
 # C extensions
 *.so
