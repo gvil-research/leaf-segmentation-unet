@@ -18,6 +18,10 @@ from torch.optim import lr_scheduler
 import albumentations as A
 
 from model import dice_loss, ResNetUNet
+from preprocess import check_dir
+
+WEIGHT_PATH = "./model/pretrained"
+check_dir(WEIGHT_PATH)
 
 def read_imgs_and_masks(folder_path, display=False):
     """
@@ -168,7 +172,7 @@ def train_model(model, optimizer, scheduler, num_epochs=25):
                 print("saving best model")
                 best_loss = epoch_loss
                 # save to disk as well
-                torch.save(model.state_dict(), 'best_val_weights.pth')
+                torch.save(model.state_dict(), os.path.join(WEIGHT_PATH, 'best_val_weights.pth'))
                 best_model_wts = copy.deepcopy(model.state_dict())
 
             if phase == 'train':
@@ -177,7 +181,7 @@ def train_model(model, optimizer, scheduler, num_epochs=25):
         time_elapsed = time.time() - since
         print('{:.0f}m {:.0f}s \n'.format(
             time_elapsed // 60, time_elapsed % 60))
-        torch.save(model.state_dict(), 'latest_weights.pth')
+        torch.save(model.state_dict(), os.path.join(WEIGHT_PATH, 'latest_weights.pth'))
     print('Best val loss: {:4f}'.format(best_loss))
 
     # load best model weights
@@ -218,7 +222,8 @@ if __name__ == "__main__":
     #    for param in l.parameters():
     #        param.requires_grad = False
 
-    optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-9, weight_decay=1e-5)
+    # start from lr=1e-4 and then slowly decrease
+    optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-4, weight_decay=1e-5)
 
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=15, gamma=0.1)
 

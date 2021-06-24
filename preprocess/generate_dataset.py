@@ -3,6 +3,9 @@ import numpy as np
 import os
 import glob
 
+
+# TODO: 1. check existence of the dataset file
+#    or 2. download dataset automatically
 def resize2square(img, size, inter_img=cv2.INTER_CUBIC,
                   inter_mask=cv2.INTER_LINEAR):
     """
@@ -155,4 +158,3 @@ if __name__ == "__main__":
     folder_path = './DenseLeaves/test'
     save_path = '../dataset/test'
     create_dataset_folder(folder_path, save_path, img_size)
-    
