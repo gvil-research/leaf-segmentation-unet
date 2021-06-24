@@ -2,8 +2,8 @@
 .vscode/*
 preprocess/DenseLeaves/*
 preprocess/DenseLeaves.zip
-model/*
-!model/note.md
+dataset/*
+!dataset/note.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
