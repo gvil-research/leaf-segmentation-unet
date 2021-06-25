@@ -1,8 +1,6 @@
 # leaf-segmentation-unet
 a unet model trained for the semantic segmentation of leaf images
 
-
-
 ## folder structure
 
 ```
@@ -54,13 +52,17 @@ a unet model trained for the semantic segmentation of leaf images
 
 * cd back to project root and run `python train.py` to train the model
 
-When training the model saves the weights in the `./model/pretrained` model.
+When training, the model saves the weights in the `./model/pretrained` model.
 * `latest_weights.pth` - weights saved at the end of the last epoch
 * `best_val_weights.pth` - weights saved when the model obtained minimum validation loss
 
 ### use pretrained (prediction)
 
 coming soon
+
+### acknowledgement
+
+* DenseLeaves dataset - Michigan State University [visit](https://www.egr.msu.edu/denseleaves/)
 
 ### update log
 2021-06-24: first code upload, most of the code is really bad (I wrote them a while ago). I shall refactor them soon.
