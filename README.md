@@ -32,7 +32,7 @@ a unet model trained for the semantic segmentation of leaf images
 #### output samples
 ![1](static/1.png)
 ![2](static/2.png)
-![3](static/3.jpg)
+![3](static/3.png)
 > input images are from the dataset of [Plant Pathology 2021 Challenge](https://www.kaggle.com/c/plant-pathology-2021-fgvc8)
 
 
