@@ -7,6 +7,8 @@ a unet model trained for the semantic segmentation of leaf images
 .
 ├── dataset
 │   └── note.md
+├── get_dataset.sh
+├── get_pretrained.sh
 ├── LICENSE
 ├── model
 │   ├── __init__.py
@@ -20,9 +22,11 @@ a unet model trained for the semantic segmentation of leaf images
 │   └── README.md
 ├── README.md
 ├── requirements.txt
-├── static
+├── test
+│   └── get_testset.sh
 ├── train.py
 └── utilities
+    ├── __init__.py
     └── utility.py
 ```
 #### output samples
