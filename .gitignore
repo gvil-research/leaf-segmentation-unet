@@ -4,6 +4,8 @@ preprocess/DenseLeaves/*
 preprocess/DenseLeaves.zip
 dataset/*
 !dataset/note.md
+test/*
+!test/get_testset.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

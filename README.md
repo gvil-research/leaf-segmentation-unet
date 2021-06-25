@@ -37,16 +37,13 @@ a unet model trained for the semantic segmentation of leaf images
 ### train from scratch
 
 * prepare dataset
-    * cd into `./preprocess`
-    * download `DenseLeaves.zip` using the command:
-    ```bash
-    wget -c https://www.egr.msu.edu/denseleaves/Data/DenseLeaves.zip
-    ```
-    * unzip
-    ```bash
-    unzip -o ./DenseLeaves.zip
-    ```
-    * run `python generate_dataset.py`
+
+    linux users can run `get_dataset.sh` instead of first three steps
+    1. cd into `./preprocess`
+    1. download `DenseLeaves.zip` from [here](https://www.egr.msu.edu/denseleaves/Data/DenseLeaves.zip)
+    1. unzip the downloaded file as `./preprocess/DenseLeaves/`
+    
+    1. run `python generate_dataset.py`
 
     The newly processed dataset is now saved at `./dataset`
 
@@ -58,11 +55,21 @@ When training, the model saves the weights in the `./model/pretrained` model.
 
 ### use pretrained (prediction)
 
-coming soon
+* download pretrained weights
 
+linux users can run `get_pretrained.sh` (make sure `gdown` is installed -- `pip install gdown`)
+
+others can download the weights from links provided in this [file](./model/pretrained/download.md)
+
+* specify test image location
+
+edit the `TEST_DIR` variable in `predict.py` to specify custom images or download a sample dataset by running `get_testset.sh` in `./test` folder.
+
+> **tip**: if the segmentation results are not satisfactory, modify the mask threshold values in `predict.py` file
 ### acknowledgement
 
 * DenseLeaves dataset - Michigan State University [visit](https://www.egr.msu.edu/denseleaves/)
+* Plant Pathology 2021 dataset - Kaggle
 
 ### update log
 2021-06-24: first code upload, most of the code is really bad (I wrote them a while ago). I shall refactor them soon.

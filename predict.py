@@ -1,5 +1,5 @@
 import os
-import glob
+from imutils import paths
 import imageio
 
 import numpy as np
@@ -16,9 +16,9 @@ from preprocess import check_dir
 WEIGHT_PATH = "./model/pretrained"
 USE_BEST_VAL = True
 DISPLAY_PLOTS = False
-TEST_DIR = "./test/"
+TEST_DIR = "./test/content/img_224/"
 SAVE_PATH = "./test/output"
-SUFFIX = "_seg"
+PREFIX = "seg_"
 
 trans = transforms.Compose([
     transforms.ToTensor()
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         model.load_state_dict(torch.load(
             os.path.join(WEIGHT_PATH, "latest_weights.pth")))
 
-    test_img_paths = glob.glob(os.path.join(TEST_DIR, "/*.jpg"))
+    test_img_paths = list(paths.list_images(TEST_DIR))
     print(f'found {len(test_img_paths)} images')
 
     # small batch_size if you are testing on 1 or 2 images
@@ -72,6 +72,8 @@ if __name__ == "__main__":
     test_set = parseTestset(test_img_paths, transform=trans)
     test_loader = DataLoader(test_set, batch_size=b_size,
                              shuffle=True, num_workers=0)
+
+    check_dir(SAVE_PATH)
 
     model.eval()
     for i, batch_pair in enumerate(tqdm(test_loader)):
@@ -82,17 +84,15 @@ if __name__ == "__main__":
         seg_batch = torch.sigmoid(seg_batch)
         for img, seg, filename in zip(img_batch, seg_batch, img_names):
             seg_np = seg.cpu().detach()
-            seg_np = reverse_transform(seg_np)
+            seg_np = reverse_transform_mask(seg_np)
             seg_np = np.where(seg_np > 220, 1, 0)
 
             img_np = img.cpu()
-            img_np = reverse_transform_mask(img_np)
-            prod_img = np.multiply(seg_np, img_np)
+            img_np = reverse_transform(img_np)
+            prod_img = np.multiply(seg_np, img_np).astype("uint8")
 
-            check_dir(SAVE_PATH)
-
-            if len(SUFFIX) > 0:
-                filename += SUFFIX
+            if len(PREFIX) > 0:
+                filename = PREFIX + filename
 
             savename = os.path.join(SAVE_PATH, filename)
             imageio.imwrite(savename, prod_img)
