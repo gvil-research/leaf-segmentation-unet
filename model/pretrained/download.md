@@ -6,5 +6,5 @@
 
 > note that if you train the model using `train.py`, the downloaded weights will be overwritten so make a backup if you don't wish to download them again.
 
-[1](https://drive.google.com/uc?id=1-NCdVz9uEGGKnrU5X3kTWbcn7brAIvnN)
-[2](https://drive.google.com/uc?id=1-RObOnohl6F4JScYIlFzmoojhrY8rFQv)
+[1]:https://drive.google.com/uc?id=1-NCdVz9uEGGKnrU5X3kTWbcn7brAIvnN
+[2]:https://drive.google.com/uc?id=1-RObOnohl6F4JScYIlFzmoojhrY8rFQv
