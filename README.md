@@ -1,4 +1,9 @@
 # leaf-segmentation-unet
+<p>
+    <img src="https://img.shields.io/github/stars/gvil-research/leaf-segmentation-unet?style=flat-square"/>
+    <img src="https://img.shields.io/github/last-commit/gvil-research/leaf-segmentation-unet?style=flat-square"/>
+</p>
+
 a unet model trained for the semantic segmentation of leaf images
 
 ## folder structure
