@@ -6,35 +6,34 @@ a unet model trained for the semantic segmentation of leaf images
 ```
 .
 ├── dataset
-│   └── note.md
+│   └── note.md
+├── model
+│   ├── pretrained
+│   │   └── download.md
+│   ├── __init__.py
+│   └── model.py
+├── preprocess
+│   ├── generate_dataset.py
+│   ├── __init__.py
+│   └── README.md
+├── test
+│   └── get_testset.sh
+├── utilities
+│   ├── __init__.py
+│   └── utility.py
 ├── get_dataset.sh
 ├── get_pretrained.sh
 ├── LICENSE
-├── model
-│   ├── __init__.py
-│   ├── model.py
-│   └── pretrained
-│       └── download.md
 ├── predict.py
-├── preprocess
-│   ├── generate_dataset.py
-│   ├── __init__.py
-│   └── README.md
 ├── README.md
 ├── requirements.txt
-├── test
-│   └── get_testset.sh
-├── train.py
-└── utilities
-    ├── __init__.py
-    └── utility.py
+└── train.py
 ```
 #### output samples
 ![1](static/1.png)
 ![2](static/2.png)
 ![3](static/3.png)
 > input images are from the dataset of [Plant Pathology 2021 Challenge](https://www.kaggle.com/c/plant-pathology-2021-fgvc8)
-
 
 ## instructions
 
@@ -46,7 +45,7 @@ a unet model trained for the semantic segmentation of leaf images
     1. cd into `./preprocess`
     1. download `DenseLeaves.zip` from [here](https://www.egr.msu.edu/denseleaves/Data/DenseLeaves.zip)
     1. unzip the downloaded file as `./preprocess/DenseLeaves/`
-    
+
     1. run `python generate_dataset.py`
 
     The newly processed dataset is now saved at `./dataset`
